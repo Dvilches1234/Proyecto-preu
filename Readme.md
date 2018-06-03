@@ -45,6 +45,15 @@ En postgresql creamos el usuario de desarrollo con el siguiente comando:
 ```sql
 create role "preu-api" with createdb login password 'preu';
 ```
+### Cargar la base de datos.
+Rails mantiene una estructura para recrear la base de datos rapidamente, usaremos esa estructura para recrearla.
+
+Para ello accederemos a la carpeta `preu-api/` y usaremos los siguientes comandos:
+```bash
+rake db:setup
+rake db:migrate
+```
+
 
 ## TO DO
 
