@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_06_013422) do
+ActiveRecord::Schema.define(version: 2018_06_14_064315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "alumnos", force: :cascade do |t|
+    t.date "fecha_de_nacimiento"
+    t.string "sexo", limit: 1
+    t.string "comuna"
+    t.string "direccion"
+    t.string "motivacion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "rut"
@@ -21,6 +31,18 @@ ActiveRecord::Schema.define(version: 2018_06_06_013422) do
     t.string "apellidos"
     t.string "email"
     t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "telefono"
+    t.string "userable_type"
+    t.bigint "userable_id"
+    t.index ["userable_type", "userable_id"], name: "index_users_on_userable_type_and_userable_id"
+  end
+
+  create_table "voluntarios", force: :cascade do |t|
+    t.string "universidad"
+    t.string "carrera"
+    t.integer "años_cursados"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
