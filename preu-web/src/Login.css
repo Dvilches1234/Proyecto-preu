@@ -1,0 +1,30 @@
+@import '~antd/dist/antd.css';
+
+.login-form {
+  max-width: 400px;
+}
+.login-form-button {
+  width: 100%;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 100px;
+  width: 120px;
+  margin: auto;
+  float: left;
+}
+
+.login-header {
+  height: 100px;
+  background-color: #015C5D;
+}
+
+.login-footer {
+  text-align: center;
+
+}
+
+.layout {
+  text-align: center;
+}

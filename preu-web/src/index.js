@@ -1,19 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter as Router, Route } from 'react-router-dom';
 import './index.css';
-import WrappedLoginForm from './login/login';
-import registerServiceWorker from './registerServiceWorker';
 import App from './App';
-import ProtectedRoute from './services/ProtectedRoute';
-import { Router, Route, Redirect } from 'react-router-dom';
-
-
-
+import WrappedLoginForm from './Login';
 
 ReactDOM.render(
   <Router>
-    <ProtectedRoute path='/' component={App} />
-    <Route path='/login' component={WrappedLoginForm} />
+    <div>
+      <Route exact path='/' component={App} />
+      <Route exact path='/login' component={WrappedLoginForm} />
+    </div>
   </Router>
+
   , document.getElementById('root'));
-registerServiceWorker();

@@ -1,10 +1,12 @@
+@import '~antd/dist/antd.css';
 .App {
   text-align: center;
 }
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  height: 32px;
+  margin: 16px
 }
 
 .App-header {
