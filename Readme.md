@@ -3,62 +3,35 @@
 ## Como trabajar:
 Se explica paso a paso como carajos trabajar en esto.
 
-### Instalar Ruby
-Instalamos Ruby desde apt con el siguiente comando:
+### Instalar dependencias de la API
+
+Seguir guia en la carpeta [Preu-api](/preu-api/README.md)
+
+### Instalar dependencias del Frontend
+
+Seguir guia en en la carpeta [Preu-web](/preu-web/README.md)
+
+
+### Instalar Foreman
+Este paso no es necesario si solamente quieren trabajar exclusivamente en la API o exclusivamente en el frontend, pero en el caso que quieran trabajar en ambos o simplemente probar toda la aplicación les recomiendo instalar la siguiente gema.
+
 ```bash
-sudo apt-get install ruby ruby-dev
+sudo gem install foreman
 ```
 
-Verificamos que la versión de ruby igual o superior a la 2.3.3 con el comando
-```bash
-ruby -v
+Foreman es un simplificador de ejecución de aplicaciones, en nuestro caso si quisieramos correr el frontend con la API tendriamos que inicializar un ambos procesos por separado (ademas de darle un puerto diferente a cada uno...) lo cual todo se empieza a complicar. Con foreman creamos un archivo llamado `Procfile`, este archivo contiene las reglas que ejecuta foreman. En nuestro caso ya existe un `Procfile` que contiene lo siguiente:
+
+```
+web: cd preu-web && npm start
+api: cd preu-api && bundle exec rails s -p 3001
 ```
 
-### Instalar PostgreSQL
-Instalamos PostgreSQL desde apt con el siguiente comando:
-```bash
-sudo apt-get install postgresql
-```
+Es un archivo sencillo de 2 lineas pero que cada una hace algo especial, en primer lugar crea un proceso que denominará como `web` que ejecutara el siguiente comando `cd preu-web && npm start`, ese comando iniciará el frontend.
+El segundo comando es el más interesante, ejecutará rails especificandole que utiliza el puerto 3001.
 
-### Instalar Rails
-Las gemas son librerias para ruby, instalaremos la libreria de Ruby on Rails `rails`.
+El archivo es totalmente modificable y de por si estará afuera de cualquier commit en git (gracias a .gitignore).
 
-Los instalaremos con el comando:
-```bash
-gem install rails
-```
-
-### Instalar el resto de las gemas.
-Rails utiliza mucha librerias para su funcionamiento, para ello existe un comando dentro de rails para instalarlas todas.
-
-Usaremos el comando adentro de la carpeta `preu-api/`:
-```bash
-sudo bundle install
-```
-### Crear el usuario en PostgreSQL.
-Ingresamos con el usuario postgres en postgresql de la siguiente forma:
-```bash
-sudo su postgres
-psql
-```
-En postgresql creamos el usuario de desarrollo con el siguiente comando:
-```sql
-create role "preu-api" with createdb login password 'preu';
-```
-### Cargar la base de datos.
-Rails mantiene una estructura para recrear la base de datos rapidamente, usaremos esa estructura para recrearla.
-
-Para ello accederemos a la carpeta `preu-api/` y usaremos los siguientes comandos:
-```bash
-rake db:setup
-rake db:migrate
-```
-
-
-## TO DO
-
-### API
-* Todo
-
-### APP
-* Todo
+Para ejecutar foreman solo necesitan correr el siguiente comando:
+ ```bash
+foreman start -p 3000
+ ```
