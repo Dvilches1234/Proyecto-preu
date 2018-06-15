@@ -1,0 +1,2 @@
+class EncargadoDeContraloria < Voluntario
+end

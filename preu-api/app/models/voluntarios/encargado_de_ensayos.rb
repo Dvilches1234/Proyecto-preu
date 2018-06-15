@@ -1,0 +1,2 @@
+class EncargadoDeEnsayos < EncargadoDeContraloria
+end
