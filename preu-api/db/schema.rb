@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_15_071528) do
+ActiveRecord::Schema.define(version: 2018_06_15_170551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,48 @@ ActiveRecord::Schema.define(version: 2018_06_15_071528) do
     t.string "comuna"
     t.string "direccion"
     t.string "motivacion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "colegio_id"
+    t.index ["colegio_id"], name: "index_alumnos_on_colegio_id"
+  end
+
+  create_table "antecedente_educacionals", force: :cascade do |t|
+    t.bigint "alumno_id"
+    t.string "situacion_academica"
+    t.integer "promedio_primero"
+    t.integer "promedio_segundo"
+    t.integer "promedio_tercero"
+    t.integer "promedio_cuarto"
+    t.string "certificado_de_notas"
+    t.string "nivel_educacional"
+    t.string "observaciones"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["alumno_id"], name: "index_antecedente_educacionals_on_alumno_id"
+  end
+
+  create_table "antecedente_socioeconomicos", force: :cascade do |t|
+    t.bigint "alumno_id"
+    t.integer "numero_integrantes"
+    t.integer "ingreso_total"
+    t.string "estado_vivienda"
+    t.integer "integrantes_trabajo_estable"
+    t.boolean "trabajador"
+    t.string "trabajo"
+    t.boolean "internet"
+    t.boolean "computador"
+    t.boolean "problemas_transporte"
+    t.boolean "puede_pagar"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["alumno_id"], name: "index_antecedente_socioeconomicos_on_alumno_id"
+  end
+
+  create_table "colegios", force: :cascade do |t|
+    t.string "nombre"
+    t.string "tipo", limit: 1
+    t.string "dependencia"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -35,14 +77,65 @@ ActiveRecord::Schema.define(version: 2018_06_15_071528) do
     t.index ["user_id"], name: "index_documento_oficials_on_user_id"
   end
 
+  create_table "ensayos", force: :cascade do |t|
+    t.bigint "seccion_id"
+    t.string "asignatura"
+    t.date "fecha"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["seccion_id"], name: "index_ensayos_on_seccion_id"
+  end
+
+  create_table "listas", force: :cascade do |t|
+    t.bigint "alumno_id"
+    t.bigint "seccion_id"
+    t.bigint "docente_id"
+    t.boolean "asistencia"
+    t.date "fecha"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["alumno_id"], name: "index_listas_on_alumno_id"
+    t.index ["docente_id"], name: "index_listas_on_docente_id"
+    t.index ["seccion_id"], name: "index_listas_on_seccion_id"
+  end
+
+  create_table "preguntas", force: :cascade do |t|
+    t.bigint "ensayos_id"
+    t.integer "numero"
+    t.string "respuesta", limit: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ensayos_id"], name: "index_preguntas_on_ensayos_id"
+  end
+
+  create_table "respuestas", force: :cascade do |t|
+    t.bigint "ensayo_id"
+    t.bigint "pregunta_id"
+    t.bigint "alumno_id"
+    t.string "respuesta", limit: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["alumno_id"], name: "index_respuestas_on_alumno_id"
+    t.index ["ensayo_id"], name: "index_respuestas_on_ensayo_id"
+    t.index ["pregunta_id"], name: "index_respuestas_on_pregunta_id"
+  end
+
+  create_table "resultados", force: :cascade do |t|
+    t.bigint "alumno_id"
+    t.bigint "ensayo_id"
+    t.integer "puntaje"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["alumno_id"], name: "index_resultados_on_alumno_id"
+    t.index ["ensayo_id"], name: "index_resultados_on_ensayo_id"
+  end
+
   create_table "seccions", force: :cascade do |t|
-    t.bigint "administrador_id"
     t.string "asignatura"
     t.string "horario"
     t.string "codigo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["administrador_id"], name: "index_seccions_on_administrador_id"
   end
 
   create_table "student_sections", force: :cascade do |t|

@@ -21,4 +21,5 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'EncargadoDeImpresiones', 'EncargadosDeImpresiones'
   inflect.irregular 'Respuesta', 'Respuestas'
   inflect.irregular 'Pregunta', 'Preguntas'
+  inflect.irregular 'Lista', 'Listas'
 end
