@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_14_064315) do
+ActiveRecord::Schema.define(version: 2018_06_15_071528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,35 @@ ActiveRecord::Schema.define(version: 2018_06_14_064315) do
     t.string "motivacion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "documento_oficials", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "tipo_de_documento"
+    t.date "fecha_de_expiracion"
+    t.string "motivo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_documento_oficials_on_user_id"
+  end
+
+  create_table "seccions", force: :cascade do |t|
+    t.bigint "administrador_id"
+    t.string "asignatura"
+    t.string "horario"
+    t.string "codigo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["administrador_id"], name: "index_seccions_on_administrador_id"
+  end
+
+  create_table "student_sections", force: :cascade do |t|
+    t.bigint "alumno_id"
+    t.bigint "seccion_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["alumno_id"], name: "index_student_sections_on_alumno_id"
+    t.index ["seccion_id"], name: "index_student_sections_on_seccion_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -45,6 +74,7 @@ ActiveRecord::Schema.define(version: 2018_06_14_064315) do
     t.integer "años_cursados"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "type"
   end
 
 end

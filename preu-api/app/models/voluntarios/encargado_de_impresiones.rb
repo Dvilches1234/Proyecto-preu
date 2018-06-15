@@ -1,0 +1,2 @@
+class EncargadoDeImpresiones < Voluntario
+end

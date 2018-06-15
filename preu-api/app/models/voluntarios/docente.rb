@@ -1,0 +1,2 @@
+class Docente < Voluntario
+end
