@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_15_170551) do
+ActiveRecord::Schema.define(version: 2018_06_17_043751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -158,6 +158,7 @@ ActiveRecord::Schema.define(version: 2018_06_15_170551) do
     t.integer "telefono"
     t.string "userable_type"
     t.bigint "userable_id"
+    t.index ["rut"], name: "index_users_on_rut", unique: true
     t.index ["userable_type", "userable_id"], name: "index_users_on_userable_type_and_userable_id"
   end
 

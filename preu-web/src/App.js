@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import APIService from './components/APIService';
-import withAuth from './components/withAuth';
+import APIService from './lib/APIService';
+import withAuth from './lib/withAuth';
 import {Layout, Menu} from 'antd';
-import logo from './logo.svg';
+import logo from './components/logo.svg';
 import './App.css';
 
 const Auth = new APIService();
@@ -47,4 +47,4 @@ class App extends Component {
   }
 }
 
-export default withAuth(App);
+export default withAuth(['administrador', 'alumno', 'docente'])(App);
