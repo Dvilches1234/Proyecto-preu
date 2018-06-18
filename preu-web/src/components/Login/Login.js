@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {Form, Input, Button, message, Card, Row, Col, Layout } from 'antd';
 import './Login.css';
-import APIService from './components/APIService';
-import logo from './logo.svg';
+import APIService from './../../lib/APIService';
+import logo from './../logo.svg';
 const FormItem = Form.Item;
 const { Header, Content, Footer } = Layout;
 class LoginForm extends Component {
@@ -77,4 +77,4 @@ class LoginForm extends Component {
 }
 
 const WrappedLoginForm = Form.create()(LoginForm);
-export default WrappedLoginForm
+export default WrappedLoginForm;

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import APIService from './APIService';
+import { Redirect } from 'react-router-dom';
 
-export default function withAuth(AuthComponent){
+const withAuth = (allowedTypes) => (AuthComponent) => {
   const Auth = new APIService();
 
-  return class AuthWrapped extends Component {
-    constructor() {
-      super();
+  return class WithAuthorization extends Component {
+    constructor(props) {
+      super(props);
       this.state = {
           user: null
       }
@@ -29,13 +30,20 @@ export default function withAuth(AuthComponent){
     }
 
     render() {
-      if(this.state.user){
+      const { type } = this.state.user;
+      if(this.state.user && allowedTypes.includes(type)){
         return (
-          <AuthComponent history={this.props.history} user={this.state.user} />
+          <AuthComponent history={this.props.history} user={this.state.user} {...this.props}/>
         )
+      }else if(this.state.user && !allowedTypes.includes(type)){
+          return  (
+            <Redirect to='/' />
+          )
       }else{
-        return null
+          return null
       }
     }
   }
 }
+
+export default withAuth;
