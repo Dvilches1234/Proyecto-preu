@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     post 'authenticate', to: 'authentication#authenticate'
     get 'desplegar/:id', to: 'docente#desplegar_lista'
     post 'rellenar', to: "docente#rellenar_lista"
+    post 'pauta', to: "ensayo#guardar_pauta"
     resources :colegios, :only => [:index, :create]
     resources :alumnos, :only => [:create]
     resources :voluntarios, :only => [:create]
