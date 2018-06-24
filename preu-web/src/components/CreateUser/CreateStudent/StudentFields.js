@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, Input, Button, DatePicker, Select } from 'antd';
 import locale from 'antd/lib/date-picker/locale/es_ES';
 import moment from 'moment';
-import './CreateStudents.css';
+import './../CreateUsers.css';
 const FormItem = Form.Item;
 const Option = Select.Option;
 const dateFormat = 'DD/MM/YYYY';

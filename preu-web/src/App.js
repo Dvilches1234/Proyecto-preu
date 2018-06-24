@@ -47,4 +47,4 @@ class App extends Component {
   }
 }
 
-export default withAuth(['administrador', 'alumno', 'docente'])(App);
+export default withAuth(['Administrador', 'Alumno', 'Voluntario'])(App);

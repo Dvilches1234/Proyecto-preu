@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Input, InputNumber, Select, Upload, Cascader, Button, Icon, message } from 'antd';
-import './CreateStudents.css';
+import './../CreateUsers.css';
 
 const FormItem = Form.Item;
 const {TextArea} = Input;

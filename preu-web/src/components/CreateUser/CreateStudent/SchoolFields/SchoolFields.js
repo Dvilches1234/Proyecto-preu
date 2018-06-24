@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, Switch, Button } from 'antd';
 import SchoolTable from './SchoolTable';
 import WrappedCreateSchool from './CreateSchool';
-import './../CreateStudents.css';
+import './../../CreateUsers.css';
 
 
 class SchoolFields extends Component {

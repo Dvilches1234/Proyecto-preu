@@ -1,6 +1,6 @@
 import React, { Component }  from 'react';
 import { Form, Button, Input, InputNumber, Select, Switch, Checkbox } from 'antd';
-import './CreateStudents.css';
+import './../CreateUsers.css';
 
 const FormItem = Form.Item;
 const Option = Select.Option;

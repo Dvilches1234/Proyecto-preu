@@ -6,5 +6,6 @@ Rails.application.routes.draw do
     post 'rellenar', to: "docente#rellenar_lista"
     resources :colegios, :only => [:index, :create]
     resources :alumnos, :only => [:create]
+    resources :voluntarios, :only => [:create]
   end
 end

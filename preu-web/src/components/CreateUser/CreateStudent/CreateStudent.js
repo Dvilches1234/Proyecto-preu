@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import APIService from './../../lib/APIService';
-import withAuth from './../../lib/withAuth';
+import APIService from './../../../lib/APIService';
+import withAuth from './../../../lib/withAuth';
 import { Steps, Button, message } from 'antd';
-import WrappedUserFields from './UserFields';
+import WrappedUserFields from './../UserFields';
 import WrappedStudentFields from './StudentFields';
 import WrappedSchoolFields from './SchoolFields/SchoolFields';
 import WrappedAcademicsFields from './AcademicsFields';
 import WrappedEconomicsFields from './EconomicsFields';
-import './CreateStudents.css';
+import './../CreateUsers.css';
 const Step = Steps.Step;
 
 export default class CreateStudent extends Component {
@@ -45,14 +45,12 @@ export default class CreateStudent extends Component {
     this.setState({current: this.state.current + 1 }, () => {
       if(this.state.current === 5){
         const values = JSON.stringify({
-          alumno: {
-            user: this.state.user,
-            student: this.state.student,
-            school: this.state.school,
-            academics: this.state.academics,
-            economics: this.state.economics,
-            document: this.state.documents,
-          }
+          user: this.state.user,
+          student: this.state.student,
+          school: this.state.school,
+          academics: this.state.academics,
+          economics: this.state.economics,
+          document: this.state.documents,
         });
         this.APIService.fetch('/alumnos', {
           method: 'POST',
