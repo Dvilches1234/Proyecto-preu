@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Button, Form, Input , Icon } from 'antd';
-import './CreateStudents.css';
+import './CreateUsers.css';
 
 const FormItem = Form.Item;
 
@@ -26,7 +26,7 @@ class UserFields extends Component {
   render(){
     const { getFieldDecorator } = this.props.form;
     return (
-      <Form onSubmit={this.handleSubmit} className="student-form">
+      <Form onSubmit={this.handleSubmit} className="user-form">
         <FormItem
           {...this.props.formItemLayout}
           label="Rut"

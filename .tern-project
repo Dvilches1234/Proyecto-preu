@@ -1,0 +1,14 @@
+{
+  "ecmaVersion": 6,
+  "libs": [],
+  "loadEagerly": [
+    "preu-web/src/**"
+  ],
+  "dontLoad": [
+    "node_modules/**",
+    "preu_api/**"
+  ],
+  "plugins": {
+    "doc_comment": true
+  }
+}

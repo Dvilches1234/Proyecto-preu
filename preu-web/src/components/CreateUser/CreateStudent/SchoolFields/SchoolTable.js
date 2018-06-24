@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Table, Icon, Input, Button } from 'antd';
-import APIService from './../../../lib/APIService';
-import './../CreateStudents.css';
+import APIService from './../../../../lib/APIService';
+import './../../CreateUsers.css';
 
 class SchoolTable extends Component {
   constructor(props){

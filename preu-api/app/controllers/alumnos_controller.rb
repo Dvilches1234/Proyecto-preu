@@ -15,6 +15,26 @@ class AlumnosController < ApplicationController
   private
 
   def alumno_params
-    params.require(:alumno).permit!
+    params.permit(
+      :school,
+      user: [
+        :rut, :nombres, :apellidos, :email, :telefono
+      ],
+      student: [
+        :comuna, :direccion, :fecha_de_nacimiento, :sexo, :motivacion
+      ],
+      academics: [
+        :situacion_academica, :promedio_primero, :promedio_segundo,
+        :promedio_tercero, :promedio_cuarto, :nivel_educacional, :observaciones
+      ],
+      economics: [
+        :numero_de_integrantes, :ingresa_total, :estado_vivienda,
+        :integrantes_trabajo_estable, :trabajador, :trabajo, :internet,
+        :computador, :problemas_transporte, :puede_pagar
+      ],
+      document: [
+        :doc_contents, :doc_name
+      ]
+    )
   end
 end
