@@ -3,6 +3,7 @@ class Alumno < ApplicationRecord
   has_many :documento_oficials, :through => :user
   has_many :student_sections
   has_many :seccions, :through => :student_sections
+  has_many :docentes, :through => :seccions
   has_many :respuestas
   has_many :ensayos, :through => :respuestas
   has_many :resultados
