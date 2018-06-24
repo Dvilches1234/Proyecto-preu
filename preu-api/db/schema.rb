@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_17_043751) do
+ActiveRecord::Schema.define(version: 2018_06_22_111530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "alumnos", force: :cascade do |t|
     t.date "fecha_de_nacimiento"
@@ -34,7 +55,6 @@ ActiveRecord::Schema.define(version: 2018_06_17_043751) do
     t.integer "promedio_segundo"
     t.integer "promedio_tercero"
     t.integer "promedio_cuarto"
-    t.string "certificado_de_notas"
     t.string "nivel_educacional"
     t.string "observaciones"
     t.datetime "created_at", null: false
@@ -65,6 +85,7 @@ ActiveRecord::Schema.define(version: 2018_06_17_043751) do
     t.string "dependencia"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "comuna"
   end
 
   create_table "documento_oficials", force: :cascade do |t|
@@ -75,6 +96,14 @@ ActiveRecord::Schema.define(version: 2018_06_17_043751) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_documento_oficials_on_user_id"
+  end
+
+  create_table "documentos", force: :cascade do |t|
+    t.string "documentable_type"
+    t.bigint "documentable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["documentable_type", "documentable_id"], name: "index_documentos_on_documentable_type_and_documentable_id"
   end
 
   create_table "ensayos", force: :cascade do |t|
