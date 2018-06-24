@@ -11,7 +11,7 @@ export default class APIService {
 
 
   login(values){
-    return this.fetch(this.prefix + '/authenticate', {
+    return this.fetch('/authenticate', {
       method: 'POST',
       body: JSON.stringify(values)
     }).then(res => {
@@ -51,7 +51,7 @@ export default class APIService {
       headers['Authorization'] = 'Bearer ' + this.getToken()
     }
 
-    return fetch(url, {
+    return fetch(this.prefix + url, {
       headers,
       ...options
     }).then(this._checkStatus).then(response => response.json())
