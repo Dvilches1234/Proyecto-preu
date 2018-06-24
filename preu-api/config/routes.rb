@@ -10,5 +10,6 @@ Rails.application.routes.draw do
     resources :colegios, :only => [:index, :create]
     resources :alumnos, :only => [:create]
     resources :voluntarios, :only => [:create]
+    resources :seccions, :only => [:create]
   end
 end
