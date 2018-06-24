@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     post 'rellenar', to: "docente#rellenar_lista"
     post 'pauta', to: "ensayo#recibir_pauta"
     post 'respuestas', to: "ensayo#recibir_respuestas"
+    get 'resultados/:id', to: "ensayo#mostrar_resultados"
     resources :colegios, :only => [:index, :create]
     resources :alumnos, :only => [:create]
     resources :voluntarios, :only => [:create]

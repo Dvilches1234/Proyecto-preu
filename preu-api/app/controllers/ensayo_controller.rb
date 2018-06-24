@@ -49,4 +49,10 @@ class EnsayoController < ApplicationController
       puts puntaje
       Resultado.create!(alumno_id: id_alumno, ensayo_id: id_ensayo, puntaje: puntaje)
   end
+def mostrar_resultados
+  resultados_id = params.permit(:id)['id']
+  resultado = Resultado.find(resultados_id)
+  render json: {puntaje: resultado.puntaje}
+end
+
 end
