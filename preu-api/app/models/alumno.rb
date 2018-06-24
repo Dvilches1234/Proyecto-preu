@@ -11,4 +11,5 @@ class Alumno < ApplicationRecord
   belongs_to :colegio
   has_one :antecedente_socioeconomico
   has_one :antecedente_educacional
+  has_many :horarios, :through => :seccions
 end
